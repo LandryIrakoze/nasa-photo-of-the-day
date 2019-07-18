@@ -1,19 +1,22 @@
 import React from "react";
-import { useState, useEffect } from "react";
 import ReactPlayer from 'react-player';
+import { Border, Paragraph, Photo, } from './Styles';
 
-import Data from './Data';
+//import dropdown js pass it props
 
 function DailyCard(props) {
 
-    console.log('props', props.info);
     return (
-        <>
+        <Border>
             <p>{props.info.date}</p>
             <h1>{props.info.title}</h1>
-            <ReactPlayer url={props.info.url} playing />
-            <p>{props.info.explanation}</p>        
-        </>
+            {
+                props.media.includes('jpg') 
+                ? <Photo src={props.media} alt="daily" />
+                : <ReactPlayer url={props.media} playing />
+            } 
+            <Paragraph>{props.info.explanation}</Paragraph>    
+        </Border>
     )
 }
 
